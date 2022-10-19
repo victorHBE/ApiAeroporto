@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import br.edu.ifms.Aeroporto.dto.VooDto;
 import br.edu.ifms.Aeroporto.exception.DataIntegrityException;
 import br.edu.ifms.Aeroporto.exception.ObjectNotFoundException;
 import br.edu.ifms.Aeroporto.model.Voo;
@@ -50,6 +51,10 @@ public class VooService {
 	public List<Voo> findAll() {
 		// TODO Auto-generated method stub		
 		return repo.findAll();
+	}
+	
+	public Voo fromDto(VooDto objDto) {
+		return new Voo(objDto.getId(), objDto.getCompanhia(), objDto.getHorario(), null, null);
 	}
 	
 	private void updateData(Voo newObj, Voo obj) {
